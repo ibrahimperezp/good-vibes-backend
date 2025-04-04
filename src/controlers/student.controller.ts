@@ -43,8 +43,8 @@ export const deleteStudent = async (req: any, res: any): Promise<void> => {
 
 export const registerStudent = async (req: any, res: any): Promise<void> => {
   try {
-    const { name, email }: { name: string, email: string } = req.body
-    const response = await Student.register(name, email)
+    const { name, email, password }: { name: string, email: string, password: string } = req.body
+    const response = await Student.register(name, email, password)
     return res.send(response)
   } catch (e) {
     return res.send({ success: false, errorDescription: 'No se pudo agregar al cliente', code: '006' })

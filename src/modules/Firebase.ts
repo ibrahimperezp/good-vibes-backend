@@ -3,7 +3,7 @@ import { getAuth } from 'firebase-admin/auth'
 import { config } from 'dotenv'
 config()
 
-class Autenticacion {
+class Firebase {
   constructor () {
     this.#auth = getAuth()
   }
@@ -14,7 +14,7 @@ class Autenticacion {
     return await this.#auth.setCustomUserClaims(uid, info)
   }
 
-  async addUser (name: string, email: string, password: string): Promise<string> {
+  async addUser (name: string, email: string, password: string, customClaims: { [key: string]: unknown }): Promise<string> {
     const { uid } = await this.#auth
       .createUser({
         displayName: name,
@@ -24,10 +24,10 @@ class Autenticacion {
         disabled: false
       })
 
-    await this.#addClaims(uid, { role: 'student' })
+    await this.#addClaims(uid, customClaims)
 
     return uid
   }
 }
 
-export default new Autenticacion()
+export default new Firebase()

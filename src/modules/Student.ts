@@ -1,16 +1,18 @@
 import { Response } from '../types.js'
 import { Turso } from './'
+import Firebase from './Firebase.js'
 
 class Student {
   #table = 'student'
 
-  async register (name: string, email: string): Promise<Response> {
+  async register (name: string, email: string, password: string): Promise<Response> {
     try {
       const valuesToInsert = { name, email, status: 1 }
       const response = await Turso.insertQuery(this.#table, valuesToInsert)
 
       if (response.success) {
         const { ROWID } = response.data.records[0]
+        await Firebase.addUser(name, email, password, { role: 'student' })
         return { success: true, data: { ROWID } }
       }
       return { success: false, errorDescription: 'No se pudo agregar el cliente', code: '006' }
