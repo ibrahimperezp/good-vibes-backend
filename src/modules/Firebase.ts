@@ -1,6 +1,7 @@
 import '../static/firebaseSDK.js'
 import { getAuth } from 'firebase-admin/auth'
 import { config } from 'dotenv'
+import { Response } from '../types.js'
 config()
 
 class Firebase {
@@ -27,6 +28,26 @@ class Firebase {
     await this.#addClaims(uid, customClaims)
 
     return uid
+  }
+
+  async disableUser (targetUid: string): Promise<Response> {
+    return await this.#auth
+      .updateUser(targetUid, { disabled: true })
+      .then(() => {
+        const r: Response = { success: true, data: {} }
+        return r
+      })
+      .catch((error) => { return { success: false, errorDescription: '', code: error } })
+  }
+
+  async enableUser (targetUid: string): Promise<Response> {
+    return await this.#auth
+      .updateUser(targetUid, { disabled: false })
+      .then(() => {
+        const r: Response = { success: true, data: {} }
+        return r
+      })
+      .catch((error) => { return { success: false, errorDescription: '', code: error } })
   }
 }
 

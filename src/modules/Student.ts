@@ -32,10 +32,12 @@ class Student {
     }
   }
 
-  async disable (ROWID: number): Promise<Response> {
+  async disable (ROWID: number, uid: string): Promise<Response> {
     try {
       const valuesToUpdate = { status: 2 }
       const response = await Turso.updateQuery(this.#table, valuesToUpdate, { field: 'ROWID', value: ROWID })
+
+      await Firebase.disableUser(uid)
 
       return { success: true, data: response }
     } catch (e) {
@@ -43,10 +45,12 @@ class Student {
     }
   }
 
-  async enable (ROWID: number): Promise<Response> {
+  async enable (ROWID: number, uid: string): Promise<Response> {
     try {
       const valuesToUpdate = { status: 1 }
       const response = await Turso.updateQuery(this.#table, valuesToUpdate, { field: 'ROWID', value: ROWID })
+
+      await Firebase.enableUser(uid)
 
       return { success: true, data: response }
     } catch (e) {
@@ -54,10 +58,12 @@ class Student {
     }
   }
 
-  async delete (ROWID: number): Promise<Response> {
+  async delete (ROWID: number, uid: string): Promise<Response> {
     try {
       const valuesToUpdate = { status: 0 }
       const response = await Turso.updateQuery(this.#table, valuesToUpdate, { field: 'ROWID', value: ROWID })
+
+      await Firebase.disableUser(uid)
 
       return { success: true, data: response }
     } catch (e) {

@@ -13,8 +13,8 @@ export const updateStudentName = async (req: any, res: any): Promise<void> => {
 
 export const disableStudent = async (req: any, res: any): Promise<void> => {
   try {
-    const { ROWID }: { ROWID: number } = req.body
-    const response = await Student.disable(ROWID)
+    const { ROWID, uid }: { ROWID: number, uid: string } = req.body
+    const response = await Student.disable(ROWID, uid)
     return res.send(response)
   } catch (e) {
     return res.send({ success: false, errorDescription: 'No se pudo deshabilitar al cliente', code: '004' })
@@ -23,8 +23,8 @@ export const disableStudent = async (req: any, res: any): Promise<void> => {
 
 export const enableStudent = async (req: any, res: any): Promise<void> => {
   try {
-    const { ROWID }: { ROWID: number } = req.body
-    const response = await Student.enable(ROWID)
+    const { ROWID, uid }: { ROWID: number, uid: string } = req.body
+    const response = await Student.enable(ROWID, uid)
     return res.send(response)
   } catch (e) {
     return res.send({ success: false, errorDescriprion: 'No se pudo deshabilitar al cliente', code: '004' })
@@ -33,8 +33,8 @@ export const enableStudent = async (req: any, res: any): Promise<void> => {
 
 export const deleteStudent = async (req: any, res: any): Promise<void> => {
   try {
-    const { ROWID }: { ROWID: number } = req.body
-    const response = await Student.delete(ROWID)
+    const { ROWID, uid }: { ROWID: number, uid: string } = req.body
+    const response = await Student.delete(ROWID, uid)
     return res.send(response)
   } catch (e) {
     return res.send({ success: false, errorDescription: 'No se pudo deshabilitar al cliente', code: '004' })
