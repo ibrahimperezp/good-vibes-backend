@@ -62,6 +62,10 @@ class Student {
       return { success: false, errorDescription: 'No se pudo eliminar al cliente', code: '003' }
     }
   }
+
+  async page (pageNumber: number, limit: number): Promise<Response> {
+    return await Turso.recordsPageQuery(this.#table, 'ROWID', 'ASC', pageNumber, limit)
+  }
 }
 
 export default new Student()

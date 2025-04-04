@@ -20,3 +20,14 @@ export type PrimitiveDataType =
   | 'string'
   | 'null'
   | 'object'
+
+export type Orientation = 'ASC' | 'DESC'
+
+export interface Pagination {
+  first: number
+  previous: number
+  current: number
+  total: number
+  next: number
+  last: number
+}
