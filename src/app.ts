@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 
 import studentRoutes from './routes/student.routes'
+import teacherRoutes from './routes/teacher.routes'
 
 const app = express()
 
@@ -12,6 +13,7 @@ app.use(express.json({ limit: '10mb' }))
 app.use(cors())
 
 app.use('/student', studentRoutes)
+app.use('/teacher', teacherRoutes)
 
 app.get('/test', async (req, res) => {
   try {
