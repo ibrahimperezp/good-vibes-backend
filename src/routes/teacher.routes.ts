@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { deleteTeacher, disableTeacher, enableTeacher, registerTeacher } from '../controlers/teacher.controller'
+import { deleteTeacher, disableTeacher, enableTeacher, registerTeacher, teacherPage } from '../controlers/teacher.controller'
 
 const router = Router()
 
@@ -14,5 +14,8 @@ router.route('/delete')
 
 router.route('/disable')
   .post(disableTeacher)
+
+router.route('/page')
+  .post(teacherPage)
 
 export default router

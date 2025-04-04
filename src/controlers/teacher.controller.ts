@@ -40,3 +40,14 @@ export const registerTeacher = async (req: any, res: any): Promise<void> => {
     return res.send({ success: false, errorDescription: 'No se pudo agregar al cliente', code: '006' })
   }
 }
+
+export const teacherPage = async (req: any, res: any): Promise<void> => {
+  try {
+    const { pageNumber, limit }: { pageNumber: number, limit: number } = req.body
+
+    const response = await Teacher.page(pageNumber, limit)
+    return res.send(response)
+  } catch (e) {
+    return res.send({ success: false, errorDescription: 'Error en servidor: No se pudo leer la pagina de Usuarios' })
+  }
+}
