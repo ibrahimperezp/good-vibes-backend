@@ -1,6 +1,46 @@
 
 import { Teacher } from '../modules'
 
+export const updateTeacherName = async (req: any, res: any): Promise<void> => {
+  try {
+    const { name, ROWID }: { name: string, ROWID: number } = req.body
+    const response = await Teacher.updateName(name, ROWID)
+    return res.send(response)
+  } catch (e) {
+    return res.send({ success: false, errorDescription: 'No se pudo editar al cliente', code: '004' })
+  }
+}
+
+export const updateTeacherEmail = async (req: any, res: any): Promise<void> => {
+  try {
+    const { email, ROWID }: { email: string, ROWID: number } = req.body
+    const response = await Teacher.updateEmail(email, ROWID)
+    return res.send(response)
+  } catch (e) {
+    return res.send({ success: false, errorDescription: 'No se pudo editar al cliente', code: '004' })
+  }
+}
+
+export const updateTeacherDescription = async (req: any, res: any): Promise<void> => {
+  try {
+    const { description, ROWID }: { description: string, ROWID: number } = req.body
+    const response = await Teacher.updateDescription(description, ROWID)
+    return res.send(response)
+  } catch (e) {
+    return res.send({ success: false, errorDescription: 'No se pudo editar al cliente', code: '004' })
+  }
+}
+
+export const updateTeacherPicture = async (req: any, res: any): Promise<void> => {
+  try {
+    const { picture, number, ROWID }: { picture: string, number: number, ROWID: number } = req.body
+    const response = await Teacher.updatePicture(picture, number, ROWID)
+    return res.send(response)
+  } catch (e) {
+    return res.send({ success: false, errorDescription: 'No se pudo editar al cliente', code: '004' })
+  }
+}
+
 export const disableTeacher = async (req: any, res: any): Promise<void> => {
   try {
     const { ROWID }: { ROWID: number } = req.body

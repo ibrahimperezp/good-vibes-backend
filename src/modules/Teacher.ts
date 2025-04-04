@@ -28,6 +28,56 @@ class Teacher {
     }
   }
 
+  async updateName (name: string, ROWID: number): Promise<Response> {
+    try {
+      const valuesToUpdate = { name }
+      const response = await Turso.updateQuery(this.#table, valuesToUpdate, { field: 'ROWID', value: ROWID })
+
+      return { success: true, data: response }
+    } catch (e) {
+      return { success: false, errorDescription: 'No se pudo editar al cliente', code: '003' }
+    }
+  }
+
+  async updateEmail (email: string, ROWID: number): Promise<Response> {
+    try {
+      const valuesToUpdate = { email }
+      const response = await Turso.updateQuery(this.#table, valuesToUpdate, { field: 'ROWID', value: ROWID })
+
+      return { success: true, data: response }
+    } catch (e) {
+      return { success: false, errorDescription: 'No se pudo editar al cliente', code: '003' }
+    }
+  }
+
+  async updateDescription (description: string, ROWID: number): Promise<Response> {
+    try {
+      const valuesToUpdate = { description }
+      const response = await Turso.updateQuery(this.#table, valuesToUpdate, { field: 'ROWID', value: ROWID })
+
+      return { success: true, data: response }
+    } catch (e) {
+      return { success: false, errorDescription: 'No se pudo editar al cliente', code: '003' }
+    }
+  }
+
+  async updatePicture (picture: string, number: number, ROWID: number): Promise<Response> {
+    try {
+      const valuesToUpdate: { [key: string]: unknown } = { }
+      if (number === 0) valuesToUpdate.featured_picture = picture
+      else if (number === 1) valuesToUpdate.picture_1 = picture
+      else if (number === 2) valuesToUpdate.picture_2 = picture
+      else if (number === 3) valuesToUpdate.picture_3 = picture
+      else if (number === 4) valuesToUpdate.picture_4 = picture
+
+      const response = await Turso.updateQuery(this.#table, valuesToUpdate, { field: 'ROWID', value: ROWID })
+
+      return { success: true, data: response }
+    } catch (e) {
+      return { success: false, errorDescription: 'No se pudo editar al cliente', code: '003' }
+    }
+  }
+
   async disable (ROWID: number): Promise<Response> {
     try {
       const valuesToUpdate = { status: 2 }
