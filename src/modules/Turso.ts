@@ -56,7 +56,7 @@ class Turso {
     try {
       const start = (pageNumber - 1) * limit
       const response = await this.queryWithArguments(
-        `SELECT * FROM ${table} ORDER BY ${guideField} ${orientation} LIMIT ? OFFSET ?;`,
+        `SELECT * FROM ${table} WHERE status != 0 ORDER BY ${guideField} ${orientation} LIMIT ? OFFSET ?;`,
         [limit, start]
       )
       if (response.success) {
