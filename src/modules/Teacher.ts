@@ -1,21 +1,52 @@
 import { Response } from '../types.js'
 import { Turso } from './'
+import Storage from './Storage.js'
 
 class Teacher {
   #table = 'teacher'
 
   async register (name: string, email: string, description: string, pictures: [string, string, string, string, string]): Promise<Response> {
     try {
+      const pics = ['', '', '', '', '', '']
+
+      if (pictures[0] !== undefined && pictures[0] !== '') {
+        const response = await Storage.saveImage(pictures[0])
+        if (response.success) pics[0] = response.data.url
+      }
+
+      if (pictures[1] !== undefined && pictures[1] !== '') {
+        const response = await Storage.saveImage(pictures[1])
+        if (response.success) pics[1] = response.data.url
+      }
+
+      if (pictures[2] !== undefined && pictures[2] !== '') {
+        const response = await Storage.saveImage(pictures[2])
+        if (response.success) pics[2] = response.data.url
+      }
+
+      if (pictures[3] !== undefined && pictures[3] !== '') {
+        const response = await Storage.saveImage(pictures[3])
+        if (response.success) pics[3] = response.data.url
+      }
+
+      if (pictures[4] !== undefined && pictures[4] !== '') {
+        const response = await Storage.saveImage(pictures[4])
+        if (response.success) pics[4] = response.data.url
+      }
+
+      console.log(pics)
+
       const valuesToInsert = {
         name,
         email,
         description,
-        featured_picture: pictures[0],
-        picture_1: pictures[1],
-        picture_2: pictures[2],
-        picture_3: pictures[3],
-        picture_4: pictures[4]
+        featured_picture: pics[0],
+        picture_1: pics[1],
+        picture_2: pics[2],
+        picture_3: pics[3],
+        picture_4: pics[4]
       }
+
       const response = await Turso.insertQuery(this.#table, valuesToInsert)
 
       if (response.success) {

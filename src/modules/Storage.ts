@@ -1,4 +1,4 @@
-import { v2 as cloudinary } from 'cloudinary'
+import { v2 as cloudinary, UploadApiResponse } from 'cloudinary'
 import { Response } from '../types.js'
 import { config } from 'dotenv'
 config()
@@ -20,14 +20,14 @@ class Storage {
         api_secret: CLOUDINARY_API_SECRET
       })
 
-      const response = await new Promise((resolve, reject) => {
+      const response: UploadApiResponse = await new Promise((resolve, reject) => {
         cloudinary.uploader.upload_stream({ overwrite: false, format: 'webp', folder: 'user' }, (error, result) => {
           if (error != null) reject(error)
-          resolve(result)
+          if (result !== undefined) resolve(result)
         }).end(buffer)
       })
 
-      return { success: true, data: [{ response }] }
+      return { success: true, data: { url: response.url } }
     } catch (e) {
       return { success: false, errorDescription: 'No se pudo' }
     }
