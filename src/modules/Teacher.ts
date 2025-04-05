@@ -34,8 +34,6 @@ class Teacher {
         if (response.success) pics[4] = response.data.url
       }
 
-      console.log(pics)
-
       const valuesToInsert = {
         name,
         email,
@@ -85,6 +83,7 @@ class Teacher {
     try {
       const valuesToUpdate = { description }
       const response = await Turso.updateQuery(this.#table, valuesToUpdate, { field: 'ROWID', value: ROWID })
+      console.log(valuesToUpdate)
 
       return { success: true, data: response }
     } catch (e) {
@@ -95,11 +94,18 @@ class Teacher {
   async updatePicture (picture: string, number: number, ROWID: number): Promise<Response> {
     try {
       const valuesToUpdate: { [key: string]: unknown } = { }
-      if (number === 0) valuesToUpdate.featured_picture = picture
-      else if (number === 1) valuesToUpdate.picture_1 = picture
-      else if (number === 2) valuesToUpdate.picture_2 = picture
-      else if (number === 3) valuesToUpdate.picture_3 = picture
-      else if (number === 4) valuesToUpdate.picture_4 = picture
+      let url
+      console.log('a')
+      const save = await Storage.saveImage(picture)
+      console.log('b')
+      if (save.success) url = save.data.url
+
+      if (number === 0) valuesToUpdate.featured_picture = url
+      else if (number === 1) valuesToUpdate.picture_1 = url
+      else if (number === 2) valuesToUpdate.picture_2 = url
+      else if (number === 3) valuesToUpdate.picture_3 = url
+      else if (number === 4) valuesToUpdate.picture_4 = url
+      console.log('c')
 
       const response = await Turso.updateQuery(this.#table, valuesToUpdate, { field: 'ROWID', value: ROWID })
 
