@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "start": "clear && nodemon dist/index.js",
-    "build": "clear && tsup"
+    "build": "clear && tsup",
+    "transpile": "tsup"
   },
   "keywords": [],
   "author": "",
