@@ -5,9 +5,10 @@ import Firebase from './Firebase.js'
 class Student {
   #table = 'student'
 
-  async register (name: string, email: string, password: string): Promise<Response> {
+  async register (name: string, email: string, password: string, date: string): Promise<Response> {
     try {
-      const valuesToInsert = { name, email, status: 1 }
+      const valuesToInsert = { name, email, birthdate: date, status: 1 }
+      console.log(valuesToInsert)
       const response = await Turso.insertQuery(this.#table, valuesToInsert)
 
       if (response.success) {
