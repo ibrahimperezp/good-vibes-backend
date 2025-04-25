@@ -5,6 +5,7 @@ import {
   enableStudent,
   registerStudent,
   studentCredits,
+  studentLastClass,
   studentPage,
   updateStudentName
 } from '../controlers/student.controller'
@@ -31,5 +32,8 @@ router.route('/page')
 
 router.route('/credits')
   .post(studentCredits)
+
+router.route('/last-class')
+  .post(studentLastClass)
 
 export default router

@@ -15,6 +15,20 @@ export const studentCredits = async (req: any, res: any): Promise<void> => {
   return res.send({ success: true, data: { credits: 500 } })
 }
 
+export const studentLastClass = async (req: any, res: any): Promise<void> => {
+  const lastClass = {
+    creationDate: '2025-04-04',
+    scheduleDate: '2025-04-13',
+    teacher: 'Ramon Pérez',
+    duration: '2 hours',
+    credits: '100',
+    id: '343',
+    studentDescription: 'this a description set by the student',
+    meetingLink: 'http://meet.com'
+  }
+  return res.send({ success: true, data: { lastClass } })
+}
+
 export const disableStudent = async (req: any, res: any): Promise<void> => {
   try {
     const { ROWID, uid }: { ROWID: number, uid: string } = req.body
