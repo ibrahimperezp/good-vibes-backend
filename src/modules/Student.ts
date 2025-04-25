@@ -8,7 +8,6 @@ class Student {
   async register (name: string, email: string, password: string, date: string): Promise<Response> {
     try {
       const valuesToInsert = { name, email, birthdate: date, status: 1 }
-      console.log(valuesToInsert)
       const response = await Turso.insertQuery(this.#table, valuesToInsert)
 
       if (response.success) {
@@ -73,6 +72,7 @@ class Student {
   }
 
   async page (pageNumber: number, limit: number): Promise<Response> {
+    console.log('page')
     return await Turso.recordsPageQuery(this.#table, 'ROWID', 'ASC', pageNumber, limit)
   }
 }

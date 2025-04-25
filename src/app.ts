@@ -3,7 +3,7 @@ import cors from 'cors'
 
 import studentRoutes from './routes/student.routes'
 import teacherRoutes from './routes/teacher.routes'
-import { Student, Authorization } from './modules'
+import { Student, Supabase } from './modules'
 
 const app = express()
 
@@ -25,7 +25,7 @@ app.get('/test', async (req, res) => {
 
 app.post('/playground', async (req, res) => {
   try {
-    const r = await Authorization.checkIfIsAutorized(1)
+    const r = await Supabase.addUser('casa perez', 'cpyucatan@gmail.com', 'password1.A', { rol: 'student' })
     res.send(r)
   } catch (e) { res.send({ success: false }) }
 })

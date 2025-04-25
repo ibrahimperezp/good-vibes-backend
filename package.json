@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@libsql/client": "^0.15.2",
+    "@supabase/supabase-js": "^2.49.4",
     "cloudinary": "^2.6.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",

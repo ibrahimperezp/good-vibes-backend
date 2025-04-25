@@ -28,6 +28,7 @@ class Turso {
       const data = await this.#db.execute({ sql, args: [...args] })
       return { success: true, data: { records: data.rows } }
     } catch (e) {
+      console.log(e)
       return { success: false, errorDescription: 'No se pudo realizar la consulta', code: '002' }
     }
   }

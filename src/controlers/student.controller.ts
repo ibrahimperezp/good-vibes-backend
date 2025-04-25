@@ -11,6 +11,10 @@ export const updateStudentName = async (req: any, res: any): Promise<void> => {
   }
 }
 
+export const studentCredits = async (req: any, res: any): Promise<void> => {
+  return res.send({ success: true, data: { credits: 500 } })
+}
+
 export const disableStudent = async (req: any, res: any): Promise<void> => {
   try {
     const { ROWID, uid }: { ROWID: number, uid: string } = req.body
@@ -53,6 +57,7 @@ export const registerStudent = async (req: any, res: any): Promise<void> => {
 
 export const studentPage = async (req: any, res: any): Promise<void> => {
   try {
+    console.log('in')
     const { pageNumber, limit }: { pageNumber: number, limit: number } = req.body
 
     const response = await Student.page(pageNumber, limit)
