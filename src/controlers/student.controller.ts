@@ -29,6 +29,20 @@ export const studentLastClass = async (req: any, res: any): Promise<void> => {
   return res.send({ success: true, data: { lastClass } })
 }
 
+export const studentInvoicePage = async (req: any, res: any): Promise<void> => {
+  const invoices = {
+    id: 'a34324',
+    amount: '200',
+    purchaseDate: '2025-04-13',
+    paymentMethod: 'stripe',
+    items: [
+      { name: 'package', price: '50', quantity: 2, id: '2359234', subtotal: '100' },
+      { name: 'big package', price: '100', quantity: 1, id: '23344', subtotal: '100' }
+    ]
+  }
+  return res.send({ success: true, data: { invoices: [invoices] } })
+}
+
 export const disableStudent = async (req: any, res: any): Promise<void> => {
   try {
     const { ROWID, uid }: { ROWID: number, uid: string } = req.body
@@ -71,7 +85,6 @@ export const registerStudent = async (req: any, res: any): Promise<void> => {
 
 export const studentPage = async (req: any, res: any): Promise<void> => {
   try {
-    console.log('in')
     const { pageNumber, limit }: { pageNumber: number, limit: number } = req.body
 
     const response = await Student.page(pageNumber, limit)
