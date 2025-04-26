@@ -1,5 +1,12 @@
 import { Router } from 'express'
-import { buyCustomCreditAmount, editStoreItem, readItemPage, saveNewItem } from '../controlers/store.controller'
+import {
+  buyCustomCreditAmount,
+  dateReport,
+  editStoreItem,
+  itemReport,
+  readItemPage,
+  saveNewItem
+} from '../controlers/store.controller'
 
 const router = Router()
 
@@ -14,5 +21,11 @@ router.route('/edit-item')
 
 router.route('/buy-credit')
   .post(buyCustomCreditAmount)
+
+router.route('/date-report')
+  .post(dateReport)
+
+router.route('/item-report')
+  .post(itemReport)
 
 export default router
