@@ -8,6 +8,7 @@ import {
   studentInvoicePage,
   studentLastClass,
   studentPage,
+  studentTeachers,
   updateStudentName
 } from '../controlers/student.controller'
 
@@ -39,5 +40,8 @@ router.route('/last-class')
 
 router.route('/invoice-page')
   .post(studentInvoicePage)
+
+router.route('/teachers')
+  .post(studentTeachers)
 
 export default router

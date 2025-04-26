@@ -15,6 +15,15 @@ export const studentCredits = async (req: any, res: any): Promise<void> => {
   return res.send({ success: true, data: { credits: 500 } })
 }
 
+export const studentTeachers = async (req: any, res: any): Promise<void> => {
+  const teachers = [
+    { name: 'Pedro' },
+    { name: 'Miguel' },
+    { name: 'Ramon' }
+  ]
+  return res.send({ success: true, data: { teachers } })
+}
+
 export const studentLastClass = async (req: any, res: any): Promise<void> => {
   const lastClass = {
     creationDate: '2025-04-04',
