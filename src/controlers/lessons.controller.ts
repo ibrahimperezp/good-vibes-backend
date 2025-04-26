@@ -10,3 +10,12 @@ export const timeRange = async (req: any, res: any): Promise<void> => {
   }
   return res.send({ success: true, data: { range } })
 }
+
+export const lessonsCount = async (req: any, res: any): Promise<void> => {
+  const count = {
+    active: 20,
+    canceled: 6,
+    given: 30
+  }
+  return res.send({ success: true, data: { count } })
+}

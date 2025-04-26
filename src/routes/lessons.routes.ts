@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import {
   availableDays,
+  lessonsCount,
   timeRange
 } from '../controlers/lessons.controller'
 
@@ -11,5 +12,8 @@ router.route('/available-days')
 
 router.route('/time-range')
   .post(timeRange)
+
+router.route('/count')
+  .post(lessonsCount)
 
 export default router
