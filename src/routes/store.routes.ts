@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { readItemPage, saveNewItem } from '../controlers/store.controller'
+import { buyCustomCreditAmount, readItemPage, saveNewItem } from '../controlers/store.controller'
 
 const router = Router()
 
@@ -8,5 +8,8 @@ router.route('/new-item')
 
 router.route('/page')
   .post(readItemPage)
+
+router.route('/buy-credit')
+  .post(buyCustomCreditAmount)
 
 export default router

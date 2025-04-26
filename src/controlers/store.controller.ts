@@ -2,6 +2,10 @@ export const saveNewItem = async (req: any, res: any): Promise<void> => {
   return res.send({ success: true })
 }
 
+export const buyCustomCreditAmount = async (req: any, res: any): Promise<void> => {
+  return res.send({ success: true })
+}
+
 export const readItemPage = async (req: any, res: any): Promise<void> => {
   const itemPage = [
     {
