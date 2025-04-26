@@ -1,4 +1,4 @@
-import { Pagination } from '../types'
+import { Pagination } from '../../types'
 
 export const createParamsForInsert = (table: string, data: { [key: string]: any }): { query: string, values: any[] } => {
   const values = []

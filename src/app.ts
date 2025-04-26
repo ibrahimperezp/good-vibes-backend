@@ -3,6 +3,7 @@ import cors from 'cors'
 import routerV1 from './v1/routes/index.routes'
 import { API_VERSION_PATH } from './v1/static/paths'
 import paramsValidatorV1 from './v1/middlewares/ParamsValidator'
+import authenticationValidatorV1 from './v1/middlewares/AutenticationValidator'
 
 const app = express()
 
@@ -10,6 +11,7 @@ app.use(cors())
 app.use(express.json({ limit: '10mb' }))
 
 app.use(API_VERSION_PATH.v1, paramsValidatorV1)
+app.use(API_VERSION_PATH.v1, authenticationValidatorV1)
 app.use(API_VERSION_PATH.v1, routerV1)
 
 app.get('/test', async (req, res) => {
