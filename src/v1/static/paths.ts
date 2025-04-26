@@ -6,7 +6,7 @@ export const SEGEMENT_PATH = {
   log: '/log',
   student: '/student',
   teacher: '/teacher',
-  store: '/store',
+  item: '/item',
   availability: '/availability',
   lesson: '/lesson',
   invoice: '/invoice'

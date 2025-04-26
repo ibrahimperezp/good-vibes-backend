@@ -1,16 +1,16 @@
-export const saveNewItem = async (req: any, res: any): Promise<void> => {
+const saveNewItem = async (req: any, res: any): Promise<void> => {
   return res.send({ success: true })
 }
 
-export const editStoreItem = async (req: any, res: any): Promise<void> => {
+const editStoreItem = async (req: any, res: any): Promise<void> => {
   return res.send({ success: true })
 }
 
-export const buyCustomCreditAmount = async (req: any, res: any): Promise<void> => {
+const buyCustomCreditAmount = async (req: any, res: any): Promise<void> => {
   return res.send({ success: true })
 }
 
-export const itemReport = async (req: any, res: any): Promise<void> => {
+const itemReport = async (req: any, res: any): Promise<void> => {
   const report = {
     sold: 20,
     name: 'package',
@@ -20,7 +20,7 @@ export const itemReport = async (req: any, res: any): Promise<void> => {
   return res.send({ success: true, data: { report } })
 }
 
-export const dateReport = async (req: any, res: any): Promise<void> => {
+const dateReport = async (req: any, res: any): Promise<void> => {
   const report = [{
     sold: 20,
     name: 'package',
@@ -30,7 +30,7 @@ export const dateReport = async (req: any, res: any): Promise<void> => {
   return res.send({ success: true, data: { report } })
 }
 
-export const readItemPage = async (req: any, res: any): Promise<void> => {
+const readItemPage = async (req: any, res: any): Promise<void> => {
   const itemPage = [
     {
       id: '2332',
@@ -45,4 +45,13 @@ export const readItemPage = async (req: any, res: any): Promise<void> => {
     }
   ]
   return res.send({ success: true, data: { itemPage } })
+}
+
+export const ItemController = {
+  saveNewItem,
+  editStoreItem,
+  buyCustomCreditAmount,
+  itemReport,
+  dateReport,
+  readItemPage
 }

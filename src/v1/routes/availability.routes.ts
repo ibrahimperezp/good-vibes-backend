@@ -1,10 +1,10 @@
 import { Router } from 'express'
 import { AVAILABILITY_PATH } from '../static/paths'
-import { readAvailabilityPage } from '../controlers/availability.controller'
+import { AvailabilityController } from '../controlers/availability.controller'
 
 const router = Router()
 
 router.route(AVAILABILITY_PATH.read.page)
-  .post(readAvailabilityPage)
+  .post(AvailabilityController.readAvailabilityPage)
 
 export default router

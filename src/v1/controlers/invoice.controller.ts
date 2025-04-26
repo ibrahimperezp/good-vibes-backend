@@ -1,8 +1,8 @@
-export const totalAmount = async (req: any, res: any): Promise<void> => {
+const totalAmount = async (req: any, res: any): Promise<void> => {
   return res.send({ success: true, data: { total: 20000 } })
 }
 
-export const readInvoicePage = async (req: any, res: any): Promise<void> => {
+const readInvoicePage = async (req: any, res: any): Promise<void> => {
   const invoices = [{
     id: 'a34324',
     amount: '200',
@@ -14,4 +14,9 @@ export const readInvoicePage = async (req: any, res: any): Promise<void> => {
     ]
   }]
   return res.send({ success: true, data: { invoices } })
+}
+
+export const InvoiceController = {
+  totalAmount,
+  readInvoicePage
 }

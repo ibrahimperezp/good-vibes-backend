@@ -1,7 +1,7 @@
 
 import { Teacher } from '../modules'
 
-export const updateTeacherName = async (req: any, res: any): Promise<void> => {
+const updateTeacherName = async (req: any, res: any): Promise<void> => {
   try {
     const { name, ROWID }: { name: string, ROWID: number } = req.body
     const response = await Teacher.updateName(name, ROWID)
@@ -11,7 +11,7 @@ export const updateTeacherName = async (req: any, res: any): Promise<void> => {
   }
 }
 
-export const updateTeacherEmail = async (req: any, res: any): Promise<void> => {
+const updateTeacherEmail = async (req: any, res: any): Promise<void> => {
   try {
     const { email, ROWID }: { email: string, ROWID: number } = req.body
     const response = await Teacher.updateEmail(email, ROWID)
@@ -21,7 +21,7 @@ export const updateTeacherEmail = async (req: any, res: any): Promise<void> => {
   }
 }
 
-export const updateTeacherDescription = async (req: any, res: any): Promise<void> => {
+const updateTeacherDescription = async (req: any, res: any): Promise<void> => {
   try {
     const { description, ROWID }: { description: string, ROWID: number } = req.body
     const response = await Teacher.updateDescription(description, ROWID)
@@ -31,7 +31,7 @@ export const updateTeacherDescription = async (req: any, res: any): Promise<void
   }
 }
 
-export const updateTeacherPicture = async (req: any, res: any): Promise<void> => {
+const updateTeacherPicture = async (req: any, res: any): Promise<void> => {
   try {
     const { picture, number, ROWID }: { picture: string, number: number, ROWID: number } = req.body
     const response = await Teacher.updatePicture(picture, number, ROWID)
@@ -41,7 +41,7 @@ export const updateTeacherPicture = async (req: any, res: any): Promise<void> =>
   }
 }
 
-export const disableTeacher = async (req: any, res: any): Promise<void> => {
+const disableTeacher = async (req: any, res: any): Promise<void> => {
   try {
     const { ROWID }: { ROWID: number } = req.body
     const response = await Teacher.disable(ROWID)
@@ -51,7 +51,7 @@ export const disableTeacher = async (req: any, res: any): Promise<void> => {
   }
 }
 
-export const enableTeacher = async (req: any, res: any): Promise<void> => {
+const enableTeacher = async (req: any, res: any): Promise<void> => {
   try {
     const { ROWID }: { ROWID: number } = req.body
     const response = await Teacher.enable(ROWID)
@@ -61,7 +61,7 @@ export const enableTeacher = async (req: any, res: any): Promise<void> => {
   }
 }
 
-export const deleteTeacher = async (req: any, res: any): Promise<void> => {
+const deleteTeacher = async (req: any, res: any): Promise<void> => {
   try {
     const { ROWID }: { ROWID: number } = req.body
     const response = await Teacher.delete(ROWID)
@@ -71,7 +71,7 @@ export const deleteTeacher = async (req: any, res: any): Promise<void> => {
   }
 }
 
-export const registerTeacher = async (req: any, res: any): Promise<void> => {
+const registerTeacher = async (req: any, res: any): Promise<void> => {
   try {
     const { name, email, description, pictures }: { name: string, email: string, description: string, pictures: [string, string, string, string, string] } = req.body
     const response = await Teacher.register(name, email, description, pictures)
@@ -81,7 +81,7 @@ export const registerTeacher = async (req: any, res: any): Promise<void> => {
   }
 }
 
-export const teacherPage = async (req: any, res: any): Promise<void> => {
+const teacherPage = async (req: any, res: any): Promise<void> => {
   try {
     const { pageNumber, limit }: { pageNumber: number, limit: number } = req.body
 
@@ -90,4 +90,16 @@ export const teacherPage = async (req: any, res: any): Promise<void> => {
   } catch (e) {
     return res.send({ success: false, errorDescription: 'Error en servidor: No se pudo leer la pagina de Usuarios' })
   }
+}
+
+export const TeacherController = {
+  updateTeacherName,
+  updateTeacherEmail,
+  updateTeacherDescription,
+  enableTeacher,
+  disableTeacher,
+  updateTeacherPicture,
+  deleteTeacher,
+  registerTeacher,
+  teacherPage
 }

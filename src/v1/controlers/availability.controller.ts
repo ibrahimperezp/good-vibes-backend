@@ -1,4 +1,4 @@
-export const readAvailabilityPage = async (req: any, res: any): Promise<void> => {
+const readAvailabilityPage = async (req: any, res: any): Promise<void> => {
   const availability = [{
     id: 'a34324',
     teacher: 'Pedro',
@@ -6,4 +6,8 @@ export const readAvailabilityPage = async (req: any, res: any): Promise<void> =>
     time: [12, 13, 20]
   }]
   return res.send({ success: true, data: { availability } })
+}
+
+export const AvailabilityController = {
+  readAvailabilityPage
 }

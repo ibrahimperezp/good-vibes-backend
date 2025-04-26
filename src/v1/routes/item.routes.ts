@@ -1,28 +1,22 @@
 import { Router } from 'express'
 import { ITEM_PATH } from '../static/paths'
-import {
-  dateReport,
-  editStoreItem,
-  itemReport,
-  readItemPage,
-  saveNewItem
-} from '../controlers/store.controller'
+import { ItemController } from '../controlers/item.controller'
 
 const router = Router()
 
 router.route(ITEM_PATH.create)
-  .post(saveNewItem)
+  .post(ItemController.saveNewItem)
 
 router.route(ITEM_PATH.read.page)
-  .post(readItemPage)
+  .post(ItemController.readItemPage)
 
 router.route(ITEM_PATH.read.report.byDate)
-  .post(dateReport)
+  .post(ItemController.dateReport)
 
 router.route(ITEM_PATH.read.report.byId)
-  .post(itemReport)
+  .post(ItemController.itemReport)
 
 router.route(ITEM_PATH.update)
-  .post(editStoreItem)
+  .post(ItemController.editStoreItem)
 
 export default router

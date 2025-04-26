@@ -1,40 +1,31 @@
 import { Router } from 'express'
 import { TEACHER_PATH } from '../static/paths'
-import {
-  deleteTeacher,
-  enableTeacher,
-  registerTeacher,
-  teacherPage,
-  updateTeacherDescription,
-  updateTeacherEmail,
-  updateTeacherName,
-  updateTeacherPicture
-} from '../controlers/teacher.controller'
+import { TeacherController } from '../controlers/teacher.controller'
 
 const router = Router()
 
 router.route(TEACHER_PATH.create)
-  .post(registerTeacher)
+  .post(TeacherController.registerTeacher)
 
 router.route(TEACHER_PATH.read.page)
-  .post(teacherPage)
+  .post(TeacherController.teacherPage)
 
 router.route(TEACHER_PATH.update.status)
-  .post(enableTeacher)
+  .post(TeacherController.enableTeacher)
 
 router.route(TEACHER_PATH.update.name)
-  .post(updateTeacherName)
+  .post(TeacherController.updateTeacherName)
 
 router.route(TEACHER_PATH.update.description)
-  .post(updateTeacherDescription)
+  .post(TeacherController.updateTeacherDescription)
 
 router.route(TEACHER_PATH.update.email)
-  .post(updateTeacherEmail)
+  .post(TeacherController.updateTeacherEmail)
 
 router.route(TEACHER_PATH.update.picture)
-  .post(updateTeacherPicture)
+  .post(TeacherController.updateTeacherPicture)
 
 router.route(TEACHER_PATH.delete)
-  .post(deleteTeacher)
+  .post(TeacherController.deleteTeacher)
 
 export default router

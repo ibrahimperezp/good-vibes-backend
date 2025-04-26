@@ -1,48 +1,37 @@
 import { Router } from 'express'
 import { STUDENT_PATH } from '../static/paths'
-import {
-  deleteStudent,
-  disableStudent,
-  registerStudent,
-  studentActiveLessons,
-  studentCredits,
-  studentInvoicePage,
-  studentLastClass,
-  studentPage,
-  studentTeachers,
-  updateStudentName
-} from '../controlers/student.controller'
+import { StudentController } from '../controlers/student.controller'
 
 const router = Router()
 
 router.route(STUDENT_PATH.create)
-  .post(registerStudent)
+  .post(StudentController.registerStudent)
 
 router.route(STUDENT_PATH.read.page)
-  .post(studentPage)
+  .post(StudentController.studentPage)
 
 router.route(STUDENT_PATH.read.credits)
-  .post(studentCredits)
+  .post(StudentController.studentCredits)
 
 router.route(STUDENT_PATH.read.lastClass)
-  .post(studentLastClass)
+  .post(StudentController.studentLastClass)
 
 router.route(STUDENT_PATH.read.invoicePage)
-  .post(studentInvoicePage)
+  .post(StudentController.studentInvoicePage)
 
 router.route(STUDENT_PATH.read.teachers)
-  .post(studentTeachers)
+  .post(StudentController.studentTeachers)
 
 router.route(STUDENT_PATH.read.activeLessons)
-  .post(studentActiveLessons)
+  .post(StudentController.studentActiveLessons)
 
 router.route(STUDENT_PATH.update.name)
-  .post(updateStudentName)
+  .post(StudentController.updateStudentName)
 
 router.route(STUDENT_PATH.update.status)
-  .post(disableStudent)
+  .post(StudentController.disableStudent)
 
 router.route(STUDENT_PATH.delete)
-  .post(deleteStudent)
+  .post(StudentController.deleteStudent)
 
 export default router
