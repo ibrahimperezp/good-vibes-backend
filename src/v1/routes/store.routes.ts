@@ -1,6 +1,6 @@
 import { Router } from 'express'
+import { ITEM_PATH } from '../static/paths'
 import {
-  buyCustomCreditAmount,
   dateReport,
   editStoreItem,
   itemReport,
@@ -10,22 +10,19 @@ import {
 
 const router = Router()
 
-router.route('/new-item')
+router.route(ITEM_PATH.create)
   .post(saveNewItem)
 
-router.route('/page')
+router.route(ITEM_PATH.read.page)
   .post(readItemPage)
 
-router.route('/edit-item')
-  .post(editStoreItem)
-
-router.route('/buy-credit')
-  .post(buyCustomCreditAmount)
-
-router.route('/date-report')
+router.route(ITEM_PATH.read.report.byDate)
   .post(dateReport)
 
-router.route('/item-report')
+router.route(ITEM_PATH.read.report.byId)
   .post(itemReport)
+
+router.route(ITEM_PATH.update)
+  .post(editStoreItem)
 
 export default router

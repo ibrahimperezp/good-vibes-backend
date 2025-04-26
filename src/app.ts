@@ -1,42 +1,17 @@
 import express from 'express'
 import cors from 'cors'
-
-import studentRoutes from './routes/student.routes'
-import teacherRoutes from './routes/teacher.routes'
-import lessonRoutes from './routes/lessons.routes'
-import invoiceRoutes from './routes/invoice.routes'
-import logRoutes from './routes/log.routes'
-import availavilityRoutes from './routes/availability.routes'
-import storeRoutes from './routes/store.routes'
-import { Student, Supabase } from './modules'
+import router from './v1/routes/index.routes'
+import { API_VERSION_PATH } from './v1/static/paths'
 
 const app = express()
 
 app.use(cors())
 app.use(express.json({ limit: '10mb' }))
-
-// middlewares
-app.use(cors())
-
-app.use('/student', studentRoutes)
-app.use('/teacher', teacherRoutes)
-app.use('/lesson', lessonRoutes)
-app.use('/invoice', invoiceRoutes)
-app.use('/log', logRoutes)
-app.use('/availability', availavilityRoutes)
-app.use('/store', storeRoutes)
+app.use(API_VERSION_PATH.v1, router)
 
 app.get('/test', async (req, res) => {
   try {
-    const r = await Student.page(1, 2)
-    res.send({ success: true, data: r })
-  } catch (e) { res.send({ success: false }) }
-})
-
-app.post('/playground', async (req, res) => {
-  try {
-    const r = await Supabase.addUser('casa perez', 'cpyucatan@gmail.com', 'password1.A', { rol: 'student' })
-    res.send(r)
+    res.send({ success: true })
   } catch (e) { res.send({ success: false }) }
 })
 

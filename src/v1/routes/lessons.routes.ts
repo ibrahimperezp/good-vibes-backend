@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import { LESSON_PATH } from '../static/paths'
 import {
   availableDays,
   lessonsCount,
@@ -8,16 +9,16 @@ import {
 
 const router = Router()
 
-router.route('/available-days')
+router.route(LESSON_PATH.read.availableDays)
   .post(availableDays)
 
-router.route('/time-range')
+router.route(LESSON_PATH.read.timeRange)
   .post(timeRange)
 
-router.route('/count')
+router.route(LESSON_PATH.read.count)
   .post(lessonsCount)
 
-router.route('/page')
+router.route(LESSON_PATH.read.page)
   .post(readLessonsPage)
 
 export default router
