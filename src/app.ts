@@ -6,6 +6,7 @@ import teacherRoutes from './routes/teacher.routes'
 import lessonRoutes from './routes/lessons.routes'
 import invoiceRoutes from './routes/invoice.routes'
 import logRoutes from './routes/log.routes'
+import availavilityRoutes from './routes/availability.routes'
 import { Student, Supabase } from './modules'
 
 const app = express()
@@ -21,6 +22,7 @@ app.use('/teacher', teacherRoutes)
 app.use('/lesson', lessonRoutes)
 app.use('/invoice', invoiceRoutes)
 app.use('/log', logRoutes)
+app.use('/availability', availavilityRoutes)
 
 app.get('/test', async (req, res) => {
   try {
