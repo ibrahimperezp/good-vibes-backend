@@ -4,6 +4,7 @@ import {
   disableStudent,
   enableStudent,
   registerStudent,
+  studentActiveLessons,
   studentCredits,
   studentInvoicePage,
   studentLastClass,
@@ -43,5 +44,8 @@ router.route('/invoice-page')
 
 router.route('/teachers')
   .post(studentTeachers)
+
+router.route('/active-lessons')
+  .post(studentActiveLessons)
 
 export default router

@@ -38,6 +38,20 @@ export const studentLastClass = async (req: any, res: any): Promise<void> => {
   return res.send({ success: true, data: { lastClass } })
 }
 
+export const studentActiveLessons = async (req: any, res: any): Promise<void> => {
+  const lessons = [{
+    creationDate: '2025-04-04',
+    scheduleDate: '2025-04-13',
+    teacher: 'Ramon Pérez',
+    duration: '2 hours',
+    credits: '100',
+    id: '343',
+    studentDescription: 'this a description set by the student',
+    meetingLink: 'http://meet.com'
+  }]
+  return res.send({ success: true, data: { lessons } })
+}
+
 export const studentInvoicePage = async (req: any, res: any): Promise<void> => {
   const invoices = {
     id: 'a34324',
