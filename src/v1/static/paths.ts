@@ -1,6 +1,4 @@
-export const API_VERSION_PATH = {
-  v1: '/api/v1'
-}
+export const API_PATH = '/api/v1'
 
 export const SEGEMENT_PATH = {
   log: '/log',

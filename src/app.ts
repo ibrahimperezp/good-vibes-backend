@@ -1,23 +1,25 @@
 import express from 'express'
 import cors from 'cors'
-import routerV1 from './v1/routes/index.routes'
-import { API_VERSION_PATH } from './v1/static/paths'
-import paramsValidatorV1 from './v1/middlewares/ParamsValidator'
-import authenticationValidatorV1 from './v1/middlewares/AutenticationValidator'
+import helmet from 'helmet'
+import { config } from 'dotenv'
+import API_V1_SETTINGS from './v1'
 
+config()
 const app = express()
 
-app.use(cors())
-app.use(express.json({ limit: '10mb' }))
+// security
+app.disable('x-powered-by')
+app.use(helmet())
+app.use(cors({ origin: process.env.ORIGIN }))
 
-app.use(API_VERSION_PATH.v1, paramsValidatorV1)
-app.use(API_VERSION_PATH.v1, authenticationValidatorV1)
-app.use(API_VERSION_PATH.v1, routerV1)
+// body parsing
+app.use(express.json({ limit: process.env.JSON_LIMIT_SIZE }))
 
-app.get('/test', async (req, res) => {
-  try {
-    res.send({ success: true })
-  } catch (e) { res.send({ success: false }) }
-})
+// v1
+const { path, router, paramsValidator, authenticationValidator, authorizationValidator } = API_V1_SETTINGS
+app.use(path, paramsValidator)
+app.use(path, authenticationValidator)
+app.use(path, authorizationValidator)
+app.use(path, router)
 
 export default app
