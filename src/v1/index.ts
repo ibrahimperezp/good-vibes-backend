@@ -1,13 +1,7 @@
-import { API_PATH } from './static/paths'
-import paramsValidator from './middlewares/ParamsValidator'
-import authenticationValidator from './middlewares/AutenticationValidator'
-import authorizationValidator from './middlewares/AuthorizationValidator'
-import router from './routes/index.routes'
-
-export default {
-  paramsValidator,
-  authenticationValidator,
-  authorizationValidator,
-  router,
-  path: API_PATH
-}
+export { API_PATH as apiPathV1 } from './static/paths'
+export { default as paramsValidatorV1 } from './middlewares/ParamsValidator'
+export { default as authenticationValidatorV1 } from './middlewares/AutenticationValidator'
+export { default as authorizationValidatorV1 } from './middlewares/AuthorizationValidator'
+export { default as routerV1 } from './routes/index.routes'
+export { default as errorHandlerV1 } from './middlewares/errorHandler'
+export { default as routerValidatorV1 } from './middlewares/routeValidator'
