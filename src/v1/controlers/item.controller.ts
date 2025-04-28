@@ -1,5 +1,11 @@
+import Item from '../modules/Item'
+
 const saveNewItem = async (req: any, res: any): Promise<void> => {
-  return res.send({ success: true })
+  const { name, id, sku, price, tax, taxIsPercent, minBuying, maxBuying, description, quantity }:
+  { name: string, id: string, sku: string, price: number, tax: number, taxIsPercent: boolean, minBuying: number, maxBuying: number, description: string, quantity: number } = req.body
+  const result = Item.create(id, sku, name, price, tax, taxIsPercent, minBuying, maxBuying, quantity, description)
+  console.log('here')
+  return res.send(result)
 }
 
 const editStoreItem = async (req: any, res: any): Promise<void> => {
